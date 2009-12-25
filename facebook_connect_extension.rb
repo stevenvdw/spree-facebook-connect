@@ -37,5 +37,16 @@ class FacebookConnectExtension < Spree::Extension
     Spree::BaseController.class_eval do
       # helper YourHelper
     end
+
+    ApplicationHelper.class_eval do
+      def user_name_with_fb_name(user)
+        if user.facebook_id.nil?
+          user_name_without_fb_name(user)
+        else
+          fb_name(user.facebook_id, :useyou => false, :linked => false)
+        end
+      end
+      alias_method_chain :user_name, :fb_name
+    end
   end
 end

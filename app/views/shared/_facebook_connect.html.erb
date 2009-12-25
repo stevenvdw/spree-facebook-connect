@@ -1,0 +1,10 @@
+<%= fb_connect_javascript_tag %>
+<script type="text/javascript">
+//<![CDATA[
+     $(function() {
+       FB_RequireFeatures(["XFBML"], function() {
+          <%= "FB.Facebook.init('#{Facebooker.api_key}','/xd_receiver.html');" %>
+      });
+    });
+//]]>
+</script>
