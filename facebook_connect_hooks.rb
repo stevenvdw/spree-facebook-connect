@@ -43,4 +43,6 @@ class FacebookConnectHooks < Spree::ThemeSupport::HookListener
   insert_before :footer_scripts, 'shared/facebook_connect'
   insert_before :admin_footer_scripts, 'shared/facebook_connect'
 
+  insert_after :admin_configurations_menu, 'shared/facebook_connect_config'
+
 end

@@ -1,0 +1,23 @@
+<h1>Facebook Connect</h1>
+
+<% form_tag(admin_facebook_connect_path, :method => :put) do -%>
+
+  <p>
+    <label>Facebook Connect API Key:</label><br />
+    <%= text_field_tag('preferences[facebook_connect_api_key]', Spree::Config[:facebook_connect_api_key], :maxlength => 100, :size => 100)%>
+    <br/>
+  </p>
+
+  <p>
+    <label>Facebook Connect Application Secret:</label><br />
+    <%= text_field_tag('preferences[facebook_connect_application_secret]', Spree::Config[:facebook_connect_application_secret], :maxlength => 100, :size => 100)%>
+    <br/>
+  </p>
+
+
+  <p class="form-buttons">
+    <%= button t('update') %>
+    <%= t("or") %> <%= link_to t("cancel"), admin_facebook_connect_path %>
+  </p>
+
+<% end -%>

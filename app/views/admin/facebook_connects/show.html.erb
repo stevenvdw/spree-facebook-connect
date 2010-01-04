@@ -1,0 +1,14 @@
+<h1>Facebook Connect Setup</h1>
+
+<table>
+  <tr>
+    <th scope="row">API Key:</th>
+    <td><%=  Spree::Config[:facebook_connect_api_key] %></td>
+  </tr>
+  <tr>
+    <th scope="row">Application Secret:</th>
+    <td><%=  Spree::Config[:facebook_connect_application_secret] %></td>
+  </tr>
+</table>
+
+<p><%= link_to_with_icon 'edit', t("edit"), edit_admin_facebook_connect_path %></p>

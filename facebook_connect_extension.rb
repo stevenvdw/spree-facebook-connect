@@ -38,6 +38,7 @@ class FacebookConnectExtension < Spree::Extension
       # helper YourHelper
     end
 
+    # Make use of fb tag to show user name
     ApplicationHelper.class_eval do
       def user_name_with_fb_name(user)
         if user.facebook_id.nil?
@@ -48,5 +49,17 @@ class FacebookConnectExtension < Spree::Extension
       end
       alias_method_chain :user_name, :fb_name
     end
+
+    # Reconfigure Facebooker from the configuration parameters
+    Facebooker.class_eval do
+      def self.spree_reload
+        unless Spree::Config["facebook_connect_api_key"].blank? or  Spree::Config["facebook_connect_application_secret"].blank?
+          FACEBOOKER.merge!({"api_key", Spree::Config["facebook_connect_api_key"], "secret_key", Spree::Config["facebook_connect_application_secret"]})
+          Facebooker.apply_configuration(FACEBOOKER)
+        end
+      end
+    end
+    Facebooker.spree_reload
+
   end
 end
